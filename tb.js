@@ -18,10 +18,10 @@ const tb = async () => {
     disableXvfb: false,
     ignoreAllFlags: false,
     proxy:{
-        host:'136.248.71.24',
-        port:'3128',
-        username:'user',
-        password:'password'
+        host:'1',
+        port:'38',
+        username:'u',
+        password:'p'
     }
   });
 
@@ -99,6 +99,7 @@ const tb = async () => {
 };
 
 tb();
+
 
 
 
