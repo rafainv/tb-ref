@@ -20,7 +20,7 @@ const tb = async () => {
         username:'user',
         password:'password'
     }
-    customConfig: {},
+    // customConfig: {},
     connectOption: {
       defaultViewport: null,
     },
@@ -101,5 +101,6 @@ const tb = async () => {
 };
 
 tb();
+
 
 
