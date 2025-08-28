@@ -10,21 +10,19 @@ const COOKIES_PATH = "cookies.json";
 
 const tb = async () => {
   const { page, browser } = await connect({
-    args: ["--start-maximized"],
-    turnstile: true,
     headless: false,
-    // disableXvfb: true,
+    args: ["--start-maximized"],
+    customConfig: {},
+    turnstile: true,
+    connectOption: {},
+    disableXvfb: false,
+    ignoreAllFlags: false,
     proxy:{
-        host:'136.248.71.24:3128',
+        host:'136.248.71.24',
         port:'3128',
         username:'user',
         password:'password'
-    },
-    customConfig: {},
-    connectOption: {
-      defaultViewport: null,
-    },
-    plugins: [],
+    }
   });
 
   try {
@@ -101,6 +99,7 @@ const tb = async () => {
 };
 
 tb();
+
 
 
 
