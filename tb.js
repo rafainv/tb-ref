@@ -14,6 +14,12 @@ const tb = async () => {
     turnstile: true,
     headless: false,
     // disableXvfb: true,
+    proxy:{
+        host:'136.248.71.24:3128',
+        port:'3128',
+        username:'user',
+        password:'password'
+    }
     customConfig: {},
     connectOption: {
       defaultViewport: null,
@@ -95,4 +101,5 @@ const tb = async () => {
 };
 
 tb();
+
 
