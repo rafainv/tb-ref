@@ -19,8 +19,8 @@ const tb = async () => {
         port:'3128',
         username:'user',
         password:'password'
-    }
-    // customConfig: {},
+    },
+    customConfig: {},
     connectOption: {
       defaultViewport: null,
     },
@@ -101,6 +101,7 @@ const tb = async () => {
 };
 
 tb();
+
 
 
 
