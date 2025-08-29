@@ -47,9 +47,10 @@ const tb = async () => {
     let token = null;
     let startDate = Date.now();
     while (!token && Date.now() - startDate < 30000) {
-      await page.click("#cf-captcha");
+      // await page.click("#cf-captcha");
       token = await page.evaluate(() => {
         try {
+          document.querySelector("#cf-captcha').click()
           let item = document.querySelector(
             '[name="cf-turnstile-response"]'
           ).value;
@@ -102,3 +103,4 @@ const tb = async () => {
 };
 
 tb();
+
