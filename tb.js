@@ -46,21 +46,22 @@ const tb = async () => {
 
     await new Promise((r) => setTimeout(r, 10000));
 
-    // let token = null;
-    // let startDate = Date.now();
-    // while (!token && Date.now() - startDate < 30000) {
-    //   token = await page.evaluate(() => {
-    //     try {
-    //       let item = document.querySelector(
-    //         '[name="cf-turnstile-response"]'
-    //       ).value;
-    //       return item && item.length > 20 ? item : null;
-    //     } catch (e) {
-    //       return null;
-    //     }
-    //   });
-    //   await new Promise((r) => setTimeout(r, 1000));
-    // }
+    let token = null;
+    let startDate = Date.now();
+    while (!token && Date.now() - startDate < 30000) {
+      await page.click("#cf-captcha");
+      token = await page.evaluate(() => {
+        try {
+          let item = document.querySelector(
+            '[name="cf-turnstile-response"]'
+          ).value;
+          return item && item.length > 20 ? item : null;
+        } catch (e) {
+          return null;
+        }
+      });
+      await new Promise((r) => setTimeout(r, 1000));
+    }
 
     // while (true) {
     //   await page.evaluate(() => {
@@ -103,6 +104,7 @@ const tb = async () => {
 };
 
 tb();
+
 
 
 
