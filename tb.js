@@ -50,7 +50,7 @@ const tb = async () => {
       // await page.click("#cf-captcha");
       token = await page.evaluate(() => {
         try {
-          document.querySelector("#cf-captcha').click()
+          document.querySelector("#cf-captcha").click()
           let item = document.querySelector(
             '[name="cf-turnstile-response"]'
           ).value;
@@ -103,4 +103,5 @@ const tb = async () => {
 };
 
 tb();
+
 
