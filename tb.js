@@ -10,19 +10,21 @@ const COOKIES_PATH = "cookies.json";
 
 const tb = async () => {
   const { page, browser } = await connect({
-    headless: false,
     args: ["--start-maximized"],
-    customConfig: {},
     turnstile: true,
-    connectOption: {},
-    disableXvfb: false,
-    ignoreAllFlags: false,
-    proxy:{
-        host:'1',
-        port:'38',
-        username:'u',
-        password:'p'
-    }
+    headless: false,
+    proxy: {
+      host: "136.248.71.24",
+      port: 3128,
+      username: "user",
+      password: "password",
+    },
+    // disableXvfb: true,
+    customConfig: {},
+    connectOption: {
+      defaultViewport: null,
+    },
+    plugins: [],
   });
 
   try {
@@ -37,7 +39,9 @@ const tb = async () => {
     });
 
     await page.evaluate(() => {
-      document.body.style.zoom = "50%";
+      // document.body.style.zoom = "50%";
+            window.scrollTo(0, document.body.scrollHeight);
+
     });
 
     await new Promise((r) => setTimeout(r, 10000));
@@ -99,6 +103,7 @@ const tb = async () => {
 };
 
 tb();
+
 
 
 
