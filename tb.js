@@ -14,10 +14,10 @@ const tb = async () => {
     turnstile: true,
     headless: false,
     proxy: {
-      host: "136.248.71.24",
-      port: 3128,
-      username: "user",
-      password: "password",
+      host: process.env.HOST_PROXY,
+      port: process.env.PORT_PROXY,
+      username: process.env.USER_PROXY,
+      password: process.env.SENHA_PROXY,
     },
     // disableXvfb: true,
     customConfig: {},
@@ -103,5 +103,6 @@ const tb = async () => {
 };
 
 tb();
+
 
 
