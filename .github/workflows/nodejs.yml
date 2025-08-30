@@ -54,6 +54,10 @@ jobs:
           URL: ${{ secrets.URL }}
           LOGIN: ${{ secrets.LOGIN }}
           SENHA: ${{ secrets.SENHA }}
+          HOST_PROXY: ${{ secrets.HOST_PROXY }}
+          PORT_PROXY: ${{ secrets.PORT_PROXY }}
+          USER_PROXY: ${{ secrets.USER_PROXY }}
+          SENHA_PROXY: ${{ secrets.SENHA_PROXY }}
         run: xvfb-run --auto-servernum -- node --trace-warnings tb.js
 
       - name: Atualiza screen.png
