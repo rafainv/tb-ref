@@ -63,13 +63,20 @@ const tb = async () => {
     }
 
     while (true) {
-      await page.evaluate(() => {
-        // document.body.style.zoom = "50%";
+      const ads = await page.evaluate(() => {
+        const ad = document.querySelector(
+          "#viewAdsTOffers1 > tbody > tr > td > strong"
+        );
+        return ad && ad.innerHTML.includes("No Ads Available") ? true : null;
       });
       const targetDivHandle = await page.evaluate(() => {
         const value = document.querySelector("#newClickDiv");
         return value.style.display !== "none" ? "New Click" : null;
       });
+      if (ads) {
+        await browser.close();
+        break;
+      }
       if (!targetDivHandle) {
         await page.waitForSelector('input[value="View"]');
         await page.click(`input[value="View"]`);
