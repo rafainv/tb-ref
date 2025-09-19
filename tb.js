@@ -97,8 +97,8 @@ const tb = async () => {
       }
       await new Promise((r) => setTimeout(r, 5000));
     }
+    await page.screenshot({ path: "screen.png" });
   } catch (error) {
-    //await page.screenshot({ path: "screen.png" });
     console.error(`Erro interno do servidor: ${error.message}`);
     await browser.close();
     await new Promise((r) => setTimeout(r, 5000));
@@ -111,6 +111,7 @@ const tb = async () => {
 };
 
 tb();
+
 
 
 
