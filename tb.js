@@ -62,6 +62,8 @@ const tb = async () => {
       await new Promise((r) => setTimeout(r, 1000));
     }
 
+    await new Promise((r) => setTimeout(r, 10000));
+
     while (true) {
       const ads = await page.evaluate(() => {
         const ad = document.querySelector(
@@ -110,6 +112,7 @@ const tb = async () => {
 };
 
 tb();
+
 
 
 
