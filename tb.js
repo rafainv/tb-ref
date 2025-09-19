@@ -88,7 +88,7 @@ const tb = async () => {
         await page.click(`input[value="View"]`);
       }
       await new Promise((r) => setTimeout(r, 5000));
-      console.log(targetDivHandle);
+      //console.log(targetDivHandle);
       const pages = await browser.pages();
       if (!pages.includes("timebucks.com/")) {
         await pages[1].bringToFront();
@@ -98,8 +98,9 @@ const tb = async () => {
       await new Promise((r) => setTimeout(r, 5000));
     }
   } catch (error) {
-    await page.screenshot({ path: "screen.png" });
+    //await page.screenshot({ path: "screen.png" });
     console.error(`Erro interno do servidor: ${error.message}`);
+    await browser.close();
     await new Promise((r) => setTimeout(r, 5000));
     await tb();
   } finally {
@@ -110,6 +111,7 @@ const tb = async () => {
 };
 
 tb();
+
 
 
 
