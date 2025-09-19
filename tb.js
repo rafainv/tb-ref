@@ -70,6 +70,7 @@ const tb = async () => {
         return ad && ad.innerHTML.includes("No Ads Available") ? true : null;
       });
       if (ads) {
+        console.log("No Ads Available");
         break;
       }
       const targetDivHandle = await page.evaluate(() => {
@@ -87,7 +88,7 @@ const tb = async () => {
         await page.click(`input[value="View"]`);
       }
       await new Promise((r) => setTimeout(r, 5000));
-      //console.log(targetDivHandle);
+      console.log(targetDivHandle);
       const pages = await browser.pages();
       if (!pages.includes("timebucks.com/")) {
         await pages[1].bringToFront();
@@ -109,6 +110,7 @@ const tb = async () => {
 };
 
 tb();
+
 
 
 
