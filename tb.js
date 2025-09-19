@@ -70,7 +70,6 @@ const tb = async () => {
         return ad && ad.innerHTML.includes("No Ads Available") ? true : null;
       });
       if (ads) {
-        await browser.close();
         break;
       }
       const targetDivHandle = await page.evaluate(() => {
@@ -97,7 +96,6 @@ const tb = async () => {
       }
       await new Promise((r) => setTimeout(r, 5000));
     }
-    await page.screenshot({ path: "screen.png" });
   } catch (error) {
     console.error(`Erro interno do servidor: ${error.message}`);
     await browser.close();
@@ -105,11 +103,13 @@ const tb = async () => {
     await tb();
   } finally {
     await new Promise((r) => setTimeout(r, 5000));
+    await page.screenshot({ path: "screen.png" });
     await browser.close();
   }
 };
 
 tb();
+
 
 
 
