@@ -64,46 +64,46 @@ const tb = async () => {
 
     await new Promise((r) => setTimeout(r, 10000));
 
-    while (true) {
-      const ads = await page.evaluate(() => {
-        const ad = document.querySelector(
-          "#viewAdsTOffers1 > tbody > tr > td > strong"
-        );
-        return ad && ad.innerHTML.includes("No Ads Available") ? true : null;
-      });
-      if (ads) {
-        console.log("No Ads Available");
-        break;
-      }
-      const targetDivHandle = await page.evaluate(() => {
-        const value = document.querySelector("#newClickDiv");
-        return value.style.display !== "none" ? "New Click" : null;
-      });
-      if (!targetDivHandle) {
-        await page.waitForSelector('input[value="View"]');
-        await page.click(`input[value="View"]`);
-      } else {
-        await page.waitForSelector('input[value="New Click"]');
-        await page.click(`input[value="New Click"]`);
-        await new Promise((r) => setTimeout(r, 5000));
-        await page.waitForSelector('input[value="View"]');
-        await page.click(`input[value="View"]`);
-      }
-      await new Promise((r) => setTimeout(r, 5000));
-      console.log(targetDivHandle);
-      const pages = await browser.pages();
-      if (!pages.includes("timebucks.com/")) {
-        await pages[1].bringToFront();
-        await new Promise((r) => setTimeout(r, 15000));
-        await pages[1].close();
-      }
-      await new Promise((r) => setTimeout(r, 5000));
-    }
+    // while (true) {
+    //   const ads = await page.evaluate(() => {
+    //     const ad = document.querySelector(
+    //       "#viewAdsTOffers1 > tbody > tr > td > strong"
+    //     );
+    //     return ad && ad.innerHTML.includes("No Ads Available") ? true : null;
+    //   });
+    //   if (ads) {
+    //     console.log("No Ads Available");
+    //     break;
+    //   }
+    //   const targetDivHandle = await page.evaluate(() => {
+    //     const value = document.querySelector("#newClickDiv");
+    //     return value.style.display !== "none" ? "New Click" : null;
+    //   });
+    //   if (!targetDivHandle) {
+    //     await page.waitForSelector('input[value="View"]');
+    //     await page.click(`input[value="View"]`);
+    //   } else {
+    //     await page.waitForSelector('input[value="New Click"]');
+    //     await page.click(`input[value="New Click"]`);
+    //     await new Promise((r) => setTimeout(r, 5000));
+    //     await page.waitForSelector('input[value="View"]');
+    //     await page.click(`input[value="View"]`);
+    //   }
+    //   await new Promise((r) => setTimeout(r, 5000));
+    //   console.log(targetDivHandle);
+    //   const pages = await browser.pages();
+    //   if (!pages.includes("timebucks.com/")) {
+    //     await pages[1].bringToFront();
+    //     await new Promise((r) => setTimeout(r, 15000));
+    //     await pages[1].close();
+    //   }
+    //   await new Promise((r) => setTimeout(r, 5000));
+    // }
   } catch (error) {
     console.error(`Erro interno do servidor: ${error.message}`);
-    await browser.close();
-    await new Promise((r) => setTimeout(r, 5000));
-    await tb();
+    // await browser.close();
+    // await new Promise((r) => setTimeout(r, 5000));
+    // await tb();
   } finally {
     await new Promise((r) => setTimeout(r, 5000));
     await page.screenshot({ path: "screen.png" });
@@ -112,6 +112,7 @@ const tb = async () => {
 };
 
 tb();
+
 
 
 
